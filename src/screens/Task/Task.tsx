@@ -5,7 +5,7 @@ import {addTask, updateTask} from '../../redux/taskSlice';
 import SubmitButton from '../../components/SubmitButton';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {TaskScreenNavigationProp} from '../../navigation/type';
-
+import Toast from 'react-native-simple-toast';
 const Task = ({route, navigation}: TaskScreenNavigationProp) => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
@@ -26,34 +26,44 @@ const Task = ({route, navigation}: TaskScreenNavigationProp) => {
     }
   }, []);
 
-  function onSubmitPress() {
-    // console.log(title);
+  function validateTitle() {
     if (title.trim().length === 0) {
       Alert.alert('You need to enter a task');
       setTitle('');
-      return;
+      return false;
     }
+    return true;
+  }
 
-    dispatch(
-      addTask({
-        title: title,
-        desc: desc,
-      }),
-    );
-    setTitle('');
-    setDesc('');
+  function onSubmitPress() {
+    // console.log(title);
+    if (validateTitle()) {
+      dispatch(
+        addTask({
+          title: title,
+          desc: desc,
+        }),
+      );
+      setTitle('');
+      setDesc('');
+      Toast.show('Task Added', Toast.SHORT);
+    }
   }
 
   function onUpdateTask() {
     console.log('upadting', title);
-    dispatch(
-      updateTask({
-        id: id,
-        title: title,
-        desc: desc,
-      }),
-    );
-    navigation.navigate('Home');
+    if (validateTitle()) {
+      validateTitle();
+      dispatch(
+        updateTask({
+          id: id,
+          title: title,
+          desc: desc,
+        }),
+      );
+      navigation.navigate('Home');
+      Toast.show('Task Edited', Toast.SHORT);
+    }
   }
 
   return (

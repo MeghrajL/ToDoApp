@@ -6,6 +6,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import React from 'react';
+
 interface ISubmitButtonPropsList {
   onPressCustom: (event: GestureResponderEvent) => void;
   submitBtnText: string;
