@@ -1,14 +1,21 @@
-import React from 'react';
-
+import React, {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {Navigation} from './navigation';
 
-import {store} from './redux/store';
 import {Provider} from 'react-redux';
+
+import {PersistGate} from 'redux-persist/integration/react';
+
+import {store, persistor} from './redux/store';
+
 function App() {
+  // useEffect(() => SplashScreen.hide(), []);
   return (
     <Provider store={store}>
-      <Navigation />
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation />
+      </PersistGate>
     </Provider>
   );
 }

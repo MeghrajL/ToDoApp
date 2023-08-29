@@ -1,5 +1,14 @@
-import {Alert, View, FlatList} from 'react-native';
-import React from 'react';
+import {
+  Alert,
+  View,
+  FlatList,
+  Modal,
+  Button,
+  SafeAreaView,
+  Pressable,
+  Text,
+} from 'react-native';
+import React, {useState} from 'react';
 import {styles} from './Home.style';
 import {ListItem} from '../../components/ListItem';
 import {deleteTask} from '../../redux/taskSlice';
@@ -12,7 +21,8 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
   // const todos = useSelector(state => state.tasks);
   const todos = useAppSelector(state => state.tasks.todoList);
   const dispatch = useAppDispatch();
-
+  const [modalVisible, setModalVisible] = useState(false);
+  const [itemId, setItemId] = useState('');
   // console.log(todos);
 
   function navigateToTaskScreen() {
@@ -23,15 +33,47 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
     navigation.navigate('Task', {id});
   }
 
+  function deleteHandle(id: string) {
+    setModalVisible(!modalVisible);
+    onDeleteTask(id);
+  }
+
+  function modalPopUp() {
+    return (
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Do you want to delete task?</Text>
+              <View style={styles.buttonContainer}>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonCnfrm]}
+                  onPress={() => deleteHandle(itemId)}>
+                  <Text style={styles.textStyle}>Confirm</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+    );
+  }
+
   function onDeletePress(id: string) {
-    Alert.alert('Do you really want to delete the task?', '', [
-      {
-        text: 'Cancel',
-        // onPress: () => console.log('Cancel Pressed'),
-        style: 'destructive',
-      },
-      {text: 'Confirm', onPress: () => onDeleteTask(id)},
-    ]);
+    setItemId(id);
+    setModalVisible(true);
   }
 
   function onDeleteTask(id: string) {
@@ -57,7 +99,7 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
           keyExtractor={item => item.id}
         />
       </View>
-
+      {modalVisible && modalPopUp()}
       <View style={styles.addTask}>
         <FloatingButton navigateToTaskScreen={navigateToTaskScreen} />
       </View>
