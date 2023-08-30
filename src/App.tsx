@@ -11,8 +11,16 @@ import {store, persistor} from './redux/store';
 
 function App() {
   useEffect(() => {
-    SplashScreen.hide();
-  });
+    const ac = new AbortController();
+
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000);
+
+    return function cleanup() {
+      ac.abort();
+    };
+  }, []);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

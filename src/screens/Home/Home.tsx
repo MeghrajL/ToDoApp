@@ -42,34 +42,35 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
   function modalPopUp() {
     return (
       // <View style={{height: '100%'}}>
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Do you want to delete task?</Text>
-              <View style={styles.buttonContainer}>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}>
-                  <Text style={styles.textStyle}>Cancel</Text>
-                </Pressable>
-                <Pressable
-                  style={[styles.button, styles.buttonCnfrm]}
-                  onPress={() => deleteHandle(itemId)}>
-                  <Text style={styles.textStyle}>Confirm</Text>
-                </Pressable>
-              </View>
+      // <View
+      //   style={{backgroundColor: 'yellow', flex: 1, justifyContent: 'center'}}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Do you want to delete task?</Text>
+            <View style={styles.buttonContainer}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonCnfrm]}
+                onPress={() => deleteHandle(itemId)}>
+                <Text style={styles.textStyle}>Confirm</Text>
+              </Pressable>
             </View>
           </View>
-        </Modal>
-      </View>
+        </View>
+      </Modal>
+      // </View>
       // </View>
     );
   }
@@ -89,6 +90,7 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
 
   return (
     <View style={styles.rootContainer}>
+      {modalVisible && modalPopUp()}
       {todos.length < 1 ? (
         <>
           <View style={styles.emptyTasksScreenContainer}>
@@ -96,8 +98,8 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
               style={styles.imageStyle}
               source={require('../../../assets/images/addnotes.png')}
             />
-            <Text style={{color: 'white'}}>
-              Create tasks now & get productive!
+            <Text style={styles.initialTextStyle}>
+              Create tasks now & become productive!
             </Text>
           </View>
         </>
@@ -116,7 +118,6 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
           />
         </View>
       )}
-      {modalVisible && modalPopUp()}
 
       <FloatingButton navigateToTaskScreen={navigateToTaskScreen} />
     </View>

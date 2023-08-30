@@ -1,18 +1,20 @@
 import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   rootContainer: {
-    height: '100%',
+    flex: 1,
+    // height: '100%',
     backgroundColor: 'black',
+    justifyContent: 'center',
   },
   listContainer: {
     // height: '90%',
     flex: 1,
   },
   centeredView: {
-    // flex: 1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 200,
+    // marginTop: 200,
   },
   modalView: {
     margin: 20,
@@ -63,5 +65,9 @@ export const styles = StyleSheet.create({
   imageStyle: {
     height: '50%',
     width: '90%',
+  },
+  initialTextStyle: {
+    color: 'white',
+    fontSize: 20,
   },
 });
