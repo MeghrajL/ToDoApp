@@ -8,22 +8,11 @@ export const styles = StyleSheet.create({
     // height: '90%',
     flex: 1,
   },
-  addTask: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#4285F4',
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-  },
   centeredView: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    marginTop: 200,
   },
   modalView: {
     margin: 20,
@@ -64,5 +53,15 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     gap: 10,
+  },
+  emptyTasksScreenContainer: {
+    flex: 1,
+    alignItems: 'center',
+    // justifyContent: 'center',
+    paddingTop: 100,
+  },
+  imageStyle: {
+    height: '50%',
+    width: '90%',
   },
 });

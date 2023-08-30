@@ -31,6 +31,7 @@
 		CE33AF752A9DA8AB00299A03 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE33AF622A9DA8AB00299A03 /* SimpleLineIcons.ttf */; };
 		CE33AF762A9DA8AB00299A03 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE33AF632A9DA8AB00299A03 /* FontAwesome6_Brands.ttf */; };
 		CE33AF772A9DA8AB00299A03 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE33AF642A9DA8AB00299A03 /* MaterialIcons.ttf */; };
+		CE5F52D82A9E145100AAD259 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				CE5F52D72A9E144700AAD259 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -317,6 +319,14 @@
 				CE33AF732A9DA8AB00299A03 /* EvilIcons.ttf in Resources */,
 				CE33AF762A9DA8AB00299A03 /* FontAwesome6_Brands.ttf in Resources */,
 				CE33AF682A9DA8AB00299A03 /* FontAwesome6_Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE5F52D72A9E144700AAD259 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE5F52D82A9E145100AAD259 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

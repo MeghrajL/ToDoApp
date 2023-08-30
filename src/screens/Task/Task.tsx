@@ -68,23 +68,22 @@ const Task = ({route, navigation}: TaskScreenNavigationProp) => {
 
   return (
     <View style={styles.rootContainer}>
-      <View>
-        <TextInput
-          placeholder="Add Task"
-          onChangeText={text => setTitle(text)}
-          value={title}
-          style={styles.titleStyle}
-          maxLength={15}
-          placeholderTextColor="#828282"
-          autoCorrect={false}
-        />
-      </View>
+      <TextInput
+        placeholder="Add Task"
+        onChangeText={text => setTitle(text)}
+        value={title}
+        style={styles.titleStyle}
+        maxLength={15}
+        placeholderTextColor="#828282"
+        autoCorrect={false}
+      />
+
       <TextInput
         placeholder="Add Description"
         onChangeText={text => setDesc(text)}
         value={desc}
         style={styles.descStyle}
-        maxLength={50}
+        maxLength={100}
         multiline={true}
         textAlignVertical="top"
         placeholderTextColor="#828282"

@@ -39,10 +39,14 @@ export const ListItem = ({
 const styles = StyleSheet.create({
   itemStyle: {
     flexDirection: 'row',
-    backgroundColor: '#0e0d0d',
+    backgroundColor: '#2a2929',
     margin: 10,
     borderRadius: 25,
     padding: 20,
+    // shadowColor: 'white',
+    // shadowOpacity: 0.2,
+    // shadowRadius: 5,
+    // shadowOffset: {width: 0, height: 1},
   },
   titleStyle: {
     color: 'white',

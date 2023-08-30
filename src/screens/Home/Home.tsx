@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Pressable,
   Text,
+  Image,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './Home.style';
@@ -40,6 +41,7 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
 
   function modalPopUp() {
     return (
+      // <View style={{height: '100%'}}>
       <View style={styles.centeredView}>
         <Modal
           animationType="slide"
@@ -68,6 +70,7 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
           </View>
         </Modal>
       </View>
+      // </View>
     );
   }
 
@@ -86,23 +89,36 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
 
   return (
     <View style={styles.rootContainer}>
-      <View style={styles.listContainer}>
-        <FlatList
-          data={todos}
-          renderItem={({item}: {item: ITodoList}) => (
-            <ListItem
-              item={item}
-              onEditTask={() => onEditTask(item.id)}
-              onDeletePress={() => onDeletePress(item.id)}
+      {todos.length < 1 ? (
+        <>
+          <View style={styles.emptyTasksScreenContainer}>
+            <Image
+              style={styles.imageStyle}
+              source={require('../../../assets/images/addnotes.png')}
             />
-          )}
-          keyExtractor={item => item.id}
-        />
-      </View>
+            <Text style={{color: 'white'}}>
+              Create tasks now & get productive!
+            </Text>
+          </View>
+        </>
+      ) : (
+        <View style={styles.listContainer}>
+          <FlatList
+            data={todos}
+            renderItem={({item}: {item: ITodoList}) => (
+              <ListItem
+                item={item}
+                onEditTask={() => onEditTask(item.id)}
+                onDeletePress={() => onDeletePress(item.id)}
+              />
+            )}
+            keyExtractor={item => item.id}
+          />
+        </View>
+      )}
       {modalVisible && modalPopUp()}
-      <View style={styles.addTask}>
-        <FloatingButton navigateToTaskScreen={navigateToTaskScreen} />
-      </View>
+
+      <FloatingButton navigateToTaskScreen={navigateToTaskScreen} />
     </View>
   );
 };
