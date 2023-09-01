@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-
+import {StyleSheet, Dimensions} from 'react-native';
+const {height, width} = Dimensions.get('window');
 export const styles = StyleSheet.create({
   rootContainer: {
     height: '100%',
@@ -10,18 +10,18 @@ export const styles = StyleSheet.create({
   },
   titleStyle: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 25,
     padding: 10,
     borderWidth: 1,
     borderColor: '#b1afaf',
     borderRadius: 10,
-    marginTop: 60,
+    marginTop: height < 300 ? 10 : 10,
   },
   descStyle: {
     color: 'white',
     fontSize: 25,
     padding: 10,
-    height: '23%',
+    height: '40%',
     // width: '90%',
     borderWidth: 1,
     borderColor: '#b1afaf',

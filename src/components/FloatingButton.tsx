@@ -14,10 +14,11 @@ export const FloatingButton = ({
   navigateToTaskScreen,
 }: FloatingButtonPropList) => {
   return (
-    <Pressable onPress={navigateToTaskScreen}>
-      <View style={styles.addTask}>
-        <Icon name="add-outline" size={40} color={'white'} />
-      </View>
+    <Pressable style={styles.addTask} onPress={navigateToTaskScreen}>
+      {/* <View style={styles.addTask}> */}
+      {/* <Text>hi</Text> */}
+      <Icon name="add-outline" size={40} color={'white'} />
+      {/* </View> */}
     </Pressable>
   );
 };

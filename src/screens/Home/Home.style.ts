@@ -49,8 +49,10 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 30,
     textAlign: 'center',
+    color: 'black',
+    fontSize: 18,
   },
   buttonContainer: {
     flexDirection: 'row',

@@ -3,11 +3,10 @@ import {
   View,
   FlatList,
   Modal,
-  Button,
-  SafeAreaView,
   Pressable,
   Text,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './Home.style';
@@ -17,6 +16,7 @@ import {FloatingButton} from '../../components/FloatingButton';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {HomeScreenNavigationProp} from '../../navigation/type';
 import {ITodoList} from '../../redux/type';
+import {Touchable} from 'react-native';
 
 const Home = ({navigation}: HomeScreenNavigationProp) => {
   // const todos = useSelector(state => state.tasks);
@@ -98,6 +98,7 @@ const Home = ({navigation}: HomeScreenNavigationProp) => {
               style={styles.imageStyle}
               source={require('../../../assets/images/addnotes.png')}
             />
+
             <Text style={styles.initialTextStyle}>
               Create tasks now & become productive!
             </Text>

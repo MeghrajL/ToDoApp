@@ -1,6 +1,13 @@
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {Navigation} from './navigation';
 
 import {Provider} from 'react-redux';
@@ -20,6 +27,8 @@ function App() {
     return function cleanup() {
       ac.abort();
     };
+
+    // SplashScreen.hide();
   }, []);
   return (
     <Provider store={store}>

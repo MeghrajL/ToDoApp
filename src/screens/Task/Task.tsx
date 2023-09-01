@@ -1,4 +1,4 @@
-import {TextInput, View, Alert} from 'react-native';
+import {TextInput, View, Alert, KeyboardAvoidingView} from 'react-native';
 import {styles} from './Task.style';
 import React, {useEffect, useState} from 'react';
 import {addTask, updateTask} from '../../redux/taskSlice';
@@ -67,7 +67,7 @@ const Task = ({route, navigation}: TaskScreenNavigationProp) => {
   }
 
   return (
-    <View style={styles.rootContainer}>
+    <KeyboardAvoidingView style={styles.rootContainer}>
       <TextInput
         placeholder="Add Task"
         onChangeText={text => setTitle(text)}
@@ -88,13 +88,14 @@ const Task = ({route, navigation}: TaskScreenNavigationProp) => {
         textAlignVertical="top"
         placeholderTextColor="#828282"
         autoCorrect={false}
+        // numberOfLines={5}
       />
 
       <SubmitButton
         onPressCustom={id === undefined ? onSubmitPress : onUpdateTask}
         submitBtnText={id === undefined ? 'Add Task' : 'Edit Task'}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
